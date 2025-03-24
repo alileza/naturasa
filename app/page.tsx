@@ -106,8 +106,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#e07a5f] rounded-lg p-6 flex flex-col items-center rounded-lg">
-            <div className="bg-[#f5f2eb] w-full max-w-xs mx-auto mb-4 overflow-hidden rounded-lg">
+          <div className="bg-[#e07a5f] rounded-2xl p-6 flex flex-col items-center">
+            <div className="bg-[#f5f2eb] w-full max-w-xs mx-auto mb-4 overflow-hidden rounded-2xl">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/u5682985318_httpss.mj.runIhIWo6VxbiE_show_only_2_organic_vani_c99a1c81-9464-4d76-ab31-bd5a7d4470af_1%202-m4vlh0lvUzPkv4l2WFbdeTHjYYxK1p.png"
                 alt="Vanilla beans with flower"
@@ -118,7 +118,7 @@ export default function Home() {
             </div>
             <h3 className="text-white text-2xl font-bold mb-2">VANILLA BEANS</h3>
             <p className="text-white text-xl mb-4">€ 4,99</p>
-            <button className="bg-[#1e3a23] text-white px-6 py-2 rounded hover:bg-[#152a19] transition-colors">
+            <button className="bg-[#1e3a23] text-white px-6 py-2 rounded-xl hover:bg-[#152a19] transition-colors">
               Shop Now
             </button>
             <div className="flex gap-2 mt-6">
