@@ -1,8 +1,30 @@
 "use client"
 
 import Image from "next/image"
+import { useState } from 'react'
 
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/u5682985318_httpss.mj.runIhIWo6VxbiE_show_only_2_organic_vani_c99a1c81-9464-4d76-ab31-bd5a7d4470af_1%202-m4vlh0lvUzPkv4l2WFbdeTHjYYxK1p.png",
+      alt: "Vanilla beans with flower"
+    },
+    {
+      src: "/vanilla-extract.png",
+      alt: "Vanilla extract in bottle"
+    }
+  ];
+
+  const handlePrevious = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
   return (
     <main className="max-w-[2000px] mx-auto bg-[#faf7f0] min-h-screen font-helvetica">
       <style jsx>{`
@@ -135,22 +157,34 @@ export default function Home() {
           <div className="bg-[#e07a5f] rounded-2xl pt-36 pb-[24px] px-36 flex flex-col items-center w-full">
             <div className="bg-[#f5f2eb] w-[384px] overflow-hidden rounded-[1.25rem] mb-24 -mt-[100px]">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/u5682985318_httpss.mj.runIhIWo6VxbiE_show_only_2_organic_vani_c99a1c81-9464-4d76-ab31-bd5a7d4470af_1%202-m4vlh0lvUzPkv4l2WFbdeTHjYYxK1p.png"
-                alt="Vanilla beans with flower"
+                src={images[currentImageIndex].src}
+                alt={images[currentImageIndex].alt}
                 width={384}
                 height={384}
-                className="w-full h-auto"
+                className="w-full h-auto transition-opacity duration-300"
+                priority
               />
             </div>
-            <h3 className="text-white text-2xl xs:text-3xl sm:text-4xl font-bold mb-1">VANILLA BEANS</h3>
-            <p style={{fontFamily: 'Helvetica Neue, Arial, sans-serif', fontStyle: 'normal'}} className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 font-normal not-italic">€ 4,99</p>
+            <h3 className="text-white text-2xl xs:text-3xl sm:text-4xl font-bold mb-1">
+              {currentImageIndex === 0 ? "VANILLA BEANS" : "VANILLA EXTRACT"}
+            </h3>
+            <p style={{fontFamily: 'Helvetica Neue, Arial, sans-serif', fontStyle: 'normal'}} className="text-white text-xl xs:text-2xl sm:text-3xl mb-2 font-normal not-italic">COMING SOON!</p>
             <button style={{fontFamily: 'Helvetica Neue, Arial, sans-serif', fontStyle: 'normal'}} className="bg-[#1e3a23] text-white px-8 sm:px-10 py-3 sm:py-4 rounded-xl text-lg sm:text-xl hover:bg-[#152a19] transition-colors not-italic font-bold mt-12">
               Shop Now
             </button>
             <div className="flex gap-4 mt-[100px] sm:mt-[100px] items-center">
-              <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-[#f5f2eb]"></div>
-              <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-[#f5f2eb]"></div>
-              <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-[#f5f2eb] opacity-50"></div>
+              <div 
+                className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-[#f5f2eb] cursor-pointer transition-opacity duration-300 opacity-50"
+                onClick={handlePrevious}
+              ></div>
+              <div 
+                className="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-[#e8e4dc] cursor-pointer transition-opacity duration-300"
+                onClick={handlePrevious}
+              ></div>
+              <div 
+                className="w-7 sm:w-8 h-7 sm:h-8 rounded-full bg-[#f5f2eb] cursor-pointer transition-opacity duration-300 opacity-50"
+                onClick={handlePrevious}
+              ></div>
             </div>
           </div>
         </section>
@@ -271,7 +305,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="border border-[#1e3a23] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row gap-20 w-[115%] -ml-[15%]">
+            <div className="border border-[#1e3a23] rounded-xl p-6 sm:p-8 flex flex-col md:flex-row gap-20 w-[115%] -ml-[15%] h-full">
               <div className="md:w-1/2 flex items-center justify-center">
                 <p style={{fontFamily: 'Helvetica Neue, Arial, sans-serif', fontStyle: 'normal'}} className="text-[#1e3a23] text-lg sm:text-2xl not-italic">
                   We prioritize the protection of local wildlife habitats, ensuring our vanilla farms harmoniously
@@ -279,13 +313,13 @@ export default function Home() {
                   responsibility to biodiversity conservation.
                 </p>
               </div>
-              <div className="md:w-[50%] relative">
+              <div className="md:w-[50%] relative h-full">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/giulia-squillace-t_Cnje2Lq_Q-unsplash%201-UQZJBdDXkkvLnmcwOaGve50JVd3p9M.png"
                   alt="Tropical forest"
                   width={700}
                   height={525}
-                  className="w-full h-auto rounded-xl"
+                  className="w-full h-full object-cover rounded-xl"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h3 className="text-white text-5xl xs:text-6xl sm:text-7xl font-bold">WILDLIFE.</h3>
