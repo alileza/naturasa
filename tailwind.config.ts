@@ -9,6 +9,14 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'xs': '375px',    // Small phones
+      'sm': '640px',    // Large phones
+      'md': '768px',    // Tablets
+      'lg': '1024px',   // Small laptops
+      'xl': '1280px',   // Large laptops
+      '2xl': '1536px',  // Desktop monitors
+    },
     extend: {
       colors: {
         primary: "#1e3a23",
